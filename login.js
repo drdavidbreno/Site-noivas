@@ -20,6 +20,7 @@ const ready = initAuth();
 form?.addEventListener("submit", async (event) => {
   event.preventDefault();
   await ready;
+  const action = getSubmitAction(event);
 
   const data = new FormData(form);
   const email = String(data.get("email") || "").trim().toLowerCase();
@@ -32,20 +33,31 @@ form?.addEventListener("submit", async (event) => {
   }
 
   try {
-    setFeedback("Entrando...", "info");
+    setFeedback(action === "signup" ? "Criando conta..." : "Entrando...", "info");
 
     if (authMode === "firebase") {
       await firebaseAuth.setPersistence(
         auth,
         remember ? firebaseAuth.browserLocalPersistence : firebaseAuth.browserSessionPersistence
       );
-      await firebaseAuth.signInWithEmailAndPassword(auth, email, password);
-      setFeedback("Login realizado com sucesso.", "success");
+
+      if (action === "signup") {
+        await firebaseAuth.createUserWithEmailAndPassword(auth, email, password);
+        setFeedback("Conta criada com sucesso.", "success");
+      } else {
+        await firebaseAuth.signInWithEmailAndPassword(auth, email, password);
+        setFeedback("Login realizado com sucesso.", "success");
+      }
+
       redirectAfterLogin();
       return;
     }
 
-    await signInLocally(email, password, remember);
+    if (action === "signup") {
+      await signUpLocally(email, password, remember);
+    } else {
+      await signInLocally(email, password, remember);
+    }
   } catch (error) {
     setFeedback(getAuthErrorMessage(error), "error");
   }
@@ -55,12 +67,17 @@ providerButtons.forEach((button) => {
   button.addEventListener("click", async () => {
     await ready;
 
-    if (authMode !== "firebase") {
-      setFeedback("Login social precisa do Firebase configurado. Use e-mail e senha por enquanto.", "info");
+    const providerKey = button.dataset.provider;
+    if (providerKey !== "google" && providerKey !== "facebook") {
+      setFeedback("Este provedor ainda nao esta disponivel nesta versao.", "info");
       return;
     }
 
-    const providerKey = button.dataset.provider;
+    if (authMode !== "firebase") {
+      await signInWithLocalProvider(providerKey);
+      return;
+    }
+
     const provider = createProvider(providerKey);
 
     if (!provider) {
@@ -169,6 +186,56 @@ async function signInLocally(email, password, remember) {
   redirectAfterLogin();
 }
 
+async function signUpLocally(email, password, remember) {
+  if (password.length < 6) {
+    throw new AuthError("local/weak-password");
+  }
+
+  const users = readJson(localUsersKey, {});
+  if (users[email]) {
+    throw new AuthError("local/email-already-in-use");
+  }
+
+  const salt = createSalt();
+  users[email] = {
+    email,
+    salt,
+    passwordHash: await hashPassword(password, salt),
+    createdAt: new Date().toISOString()
+  };
+  localStorage.setItem(localUsersKey, JSON.stringify(users));
+
+  saveLocalSession({ email, mode: "local", loggedAt: new Date().toISOString() }, remember);
+  setFeedback("Conta criada e login realizado.", "success");
+  redirectAfterLogin();
+}
+
+async function signInWithLocalProvider(providerKey) {
+  const providerLabel = providerKey === "facebook" ? "Facebook" : "Google";
+  const providerEmail = `local.${providerKey}@opscasei.local`;
+  const users = readJson(localUsersKey, {});
+
+  if (!users[providerEmail]) {
+    const seedPassword = `social-${providerKey}-login`;
+    const salt = createSalt();
+    users[providerEmail] = {
+      email: providerEmail,
+      provider: providerKey,
+      salt,
+      passwordHash: await hashPassword(seedPassword, salt),
+      createdAt: new Date().toISOString()
+    };
+    localStorage.setItem(localUsersKey, JSON.stringify(users));
+  }
+
+  saveLocalSession(
+    { email: providerEmail, provider: providerKey, mode: "local-social", loggedAt: new Date().toISOString() },
+    true
+  );
+  setFeedback(`Login com ${providerLabel} realizado no modo local.`, "success");
+  redirectAfterLogin();
+}
+
 function hydrateLocalSession() {
   const session = getLocalSession();
   if (!session) {
@@ -209,6 +276,10 @@ function createProvider(providerKey) {
     return new firebaseAuth.GoogleAuthProvider();
   }
 
+  if (providerKey === "facebook") {
+    return new firebaseAuth.FacebookAuthProvider();
+  }
+
   return null;
 }
 
@@ -246,6 +317,11 @@ function setFeedback(message, type = "info") {
   feedback.dataset.type = type;
 }
 
+function getSubmitAction(event) {
+  const action = event?.submitter?.value;
+  return action === "signup" ? "signup" : "signin";
+}
+
 function getAuthErrorMessage(error) {
   const messages = {
     "auth/invalid-email": "Confira o e-mail informado.",
@@ -254,8 +330,11 @@ function getAuthErrorMessage(error) {
     "auth/wrong-password": "Senha incorreta.",
     "auth/popup-closed-by-user": "Login cancelado antes de concluir.",
     "auth/too-many-requests": "Muitas tentativas. Aguarde um pouco e tente novamente.",
+    "auth/email-already-in-use": "Este e-mail já está em uso. Tente entrar.",
+    "auth/weak-password": "Use uma senha com pelo menos 6 caracteres.",
     "local/weak-password": "Use uma senha com pelo menos 6 caracteres.",
-    "local/wrong-password": "Senha incorreta para este e-mail."
+    "local/wrong-password": "Senha incorreta para este e-mail.",
+    "local/email-already-in-use": "Este e-mail já está em uso. Tente entrar."
   };
 
   return messages[error?.code] || "Nao foi possivel concluir o login agora.";

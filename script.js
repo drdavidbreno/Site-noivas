@@ -10,6 +10,7 @@ const modalHashMap = {
   "#criar-lista": "gift-tool"
 };
 const currency = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
+const serviceFeeRate = 0.0389;
 const utilityTitle = document.querySelector("#utility-title");
 const utilityText = document.querySelector("#utility-text");
 const utilityEyebrow = document.querySelector("#utility-eyebrow");
@@ -239,7 +240,7 @@ const layoutThemeSites = {
     tagline: "Classico, intimo e para sempre",
     place: "Palacio das Artes - Belo Horizonte, MG",
     color: "#2f3437",
-    photoShape: "square",
+    photoShape: "soft",
     heroPhoto: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1800&q=82",
     storyPhoto: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80",
     showGifts: true,
@@ -329,22 +330,96 @@ document.querySelectorAll("[data-theme-demo]").forEach((button) => {
   });
 });
 
-document.querySelectorAll("[data-theme-use]").forEach((button) => {
+const themeCheckoutInfo = {
+  forest: {
+    category: "01 - Classico",
+    title: "Floresta elegante",
+    price: "R$ 97",
+    image: "img/01 (3).png",
+    description: "Visual classico, elegante e acolhedor para casamentos com cerimonia tradicional."
+  },
+  classic: {
+    category: "02 - Preto e branco",
+    title: "Preto e branco",
+    price: "R$ 97",
+    image: "img/01 (4).png",
+    description: "Tema sofisticado, limpo e atemporal para um site com cara editorial."
+  },
+  photo: {
+    category: "03 - Editorial",
+    title: "Editorial romantico",
+    price: "R$ 127",
+    image: "img/01 (5).png",
+    description: "Tema com impacto visual forte, ideal para destacar fotos grandes e momentos do casal."
+  },
+  blush: {
+    category: "04 - Minimal",
+    title: "Minimal delicado",
+    price: "R$ 97",
+    image: "img/01 (7).png",
+    description: "Tema claro, leve e romantico para uma experiencia suave no celular e no desktop."
+  }
+};
+
+const checkoutImage = document.querySelector("#checkout-image");
+const checkoutCategory = document.querySelector("#checkout-category");
+const checkoutTitle = document.querySelector("#theme-checkout-title");
+const checkoutDescription = document.querySelector("#checkout-description");
+const checkoutPrice = document.querySelector("#checkout-price");
+const checkoutThemeKey = document.querySelector("#checkout-theme-key");
+const checkoutDemo = document.querySelector("#checkout-demo");
+const themeCheckoutForm = document.querySelector("#theme-checkout-form");
+let selectedCheckoutTheme = "forest";
+
+function openThemeCheckout(themeKey) {
+  const theme = themeCheckoutInfo[themeKey];
+  if (!theme) return;
+
+  selectedCheckoutTheme = themeKey;
+  checkoutImage.src = theme.image;
+  checkoutImage.alt = `Previa do tema ${theme.title}`;
+  checkoutCategory.textContent = theme.category;
+  checkoutTitle.textContent = theme.title;
+  checkoutDescription.textContent = theme.description;
+  checkoutPrice.textContent = theme.price;
+  checkoutThemeKey.value = themeKey;
+  openModal("theme-checkout");
+}
+
+document.querySelectorAll("[data-theme-buy]").forEach((button) => {
   button.addEventListener("click", (event) => {
     event.stopPropagation();
-    const styleByTheme = {
-      forest: "romantic",
-      classic: "classic",
-      photo: "modern",
-      blush: "romantic"
-    };
+    openThemeCheckout(button.dataset.themeBuy);
+  });
+});
 
-    if (builderForm?.elements.style) {
-      builderForm.elements.style.value = styleByTheme[button.dataset.themeUse] || "romantic";
-      updateSitePreview();
-    }
+checkoutDemo?.addEventListener("click", () => {
+  openThemeSite(selectedCheckoutTheme);
+});
 
-    openModal("site-builder");
+themeCheckoutForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const data = new FormData(themeCheckoutForm);
+  const order = {
+    theme: data.get("theme"),
+    couple: data.get("couple"),
+    email: data.get("email"),
+    phone: data.get("phone"),
+    createdAt: new Date().toISOString()
+  };
+  const orders = JSON.parse(localStorage.getItem("opscaseiThemeOrders") || "[]");
+  orders.unshift(order);
+  localStorage.setItem("opscaseiThemeOrders", JSON.stringify(orders));
+  themeCheckoutForm.reset();
+  closeModal();
+  openUtility({
+    eyebrow: "Compra iniciada",
+    title: "Tema reservado com sucesso",
+    text: "Recebemos seus dados e deixamos o tema escolhido salvo. Em instantes voce recebe as instrucoes de pagamento e personalizacao por e-mail ou WhatsApp.",
+    actions: [
+      { type: "button", action: "site-builder", label: "Personalizar site" },
+      { type: "button", action: "open-demo-site", label: "Ver exemplo", secondary: true }
+    ]
   });
 });
 
@@ -401,7 +476,7 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
   });
 });
 
-document.querySelector(".play-button").addEventListener("click", () => {
+document.querySelector(".play-button")?.addEventListener("click", () => {
   openUtility({
     eyebrow: "Vídeo",
     title: "Como funciona",
@@ -445,6 +520,11 @@ const uploadedImages = {
   heroPhoto: "",
   storyPhoto: ""
 };
+const themeByStyle = {
+  romantic: "forest",
+  classic: "classic",
+  modern: "photo"
+};
 
 function formatDate(value) {
   if (!value) return "";
@@ -464,10 +544,13 @@ function slugify(value) {
 
 function getBuilderData() {
   const data = new FormData(builderForm);
+  const style = String(data.get("style") || "romantic");
+  const explicitTheme = String(data.get("theme") || "");
   return {
     couple: data.get("couple"),
     date: data.get("date"),
-    style: data.get("style"),
+    style,
+    theme: explicitTheme || themeByStyle[style] || "forest",
     message: data.get("message"),
     tagline: data.get("tagline"),
     place: data.get("place"),
@@ -495,6 +578,18 @@ function updateSitePreview() {
 }
 
 updatePreviewButton.addEventListener("click", updateSitePreview);
+
+function syncBuilderThemeFromStyle() {
+  if (!builderForm?.elements.theme || !builderForm?.elements.style) return;
+  const style = String(builderForm.elements.style.value || "romantic");
+  builderForm.elements.theme.value = themeByStyle[style] || "forest";
+}
+
+if (builderForm?.elements.style) {
+  builderForm.elements.style.addEventListener("change", syncBuilderThemeFromStyle);
+}
+
+syncBuilderThemeFromStyle();
 
 function readImageInput(input) {
   const file = input.files && input.files[0];
@@ -591,6 +686,111 @@ searchResults.addEventListener("click", (event) => {
   window.location.href = `site.html?site=${encodeURIComponent(site.slug)}`;
 });
 renderCouples(couples);
+
+const countdown = document.querySelector("[data-countdown]");
+
+function updateCountdown() {
+  if (!countdown) return;
+
+  const target = new Date(countdown.dataset.countdown).getTime();
+  const distance = Math.max(0, target - Date.now());
+  const days = Math.floor(distance / 86400000);
+  const hours = Math.floor((distance % 86400000) / 3600000);
+  const minutes = Math.floor((distance % 3600000) / 60000);
+  const seconds = Math.floor((distance % 60000) / 1000);
+
+  countdown.querySelector("[data-countdown-days]").textContent = String(days);
+  countdown.querySelector("[data-countdown-hours]").textContent = String(hours).padStart(2, "0");
+  countdown.querySelector("[data-countdown-minutes]").textContent = String(minutes).padStart(2, "0");
+  countdown.querySelector("[data-countdown-seconds]").textContent = String(seconds).padStart(2, "0");
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+const showcaseGiftItems = [
+  { name: "Cota de viagem", price: 450 },
+  { name: "Jantar romantico", price: 260 },
+  { name: "Mobilia da sala", price: 680 },
+  { name: "Album do casamento", price: 320 }
+];
+const showcaseSelectedGifts = [];
+const showcaseCart = document.querySelector("#showcase-cart");
+const showcaseSubtotal = document.querySelector("#showcase-subtotal");
+const showcaseFee = document.querySelector("#showcase-fee");
+const showcaseTotal = document.querySelector("#showcase-total");
+const showcaseClear = document.querySelector("#showcase-clear");
+
+function renderShowcaseCart() {
+  if (!showcaseCart || !showcaseSubtotal || !showcaseFee || !showcaseTotal) return;
+
+  showcaseCart.innerHTML = showcaseSelectedGifts.length
+    ? showcaseSelectedGifts.map((gift) => `
+      <article>
+        <strong>${gift.name}</strong>
+        <span>${currency.format(gift.price)}</span>
+      </article>
+    `).join("")
+    : "<p>Nenhum presente selecionado ainda.</p>";
+
+  const subtotal = showcaseSelectedGifts.reduce((sum, gift) => sum + gift.price, 0);
+  const fee = subtotal * serviceFeeRate;
+  showcaseSubtotal.textContent = currency.format(subtotal);
+  showcaseFee.textContent = currency.format(fee);
+  showcaseTotal.textContent = currency.format(subtotal + fee);
+}
+
+document.querySelectorAll("[data-showcase-gift]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const gift = showcaseGiftItems[Number(button.dataset.showcaseGift)];
+    if (!gift) return;
+    showcaseSelectedGifts.push(gift);
+    renderShowcaseCart();
+  });
+});
+
+showcaseClear?.addEventListener("click", () => {
+  showcaseSelectedGifts.length = 0;
+  renderShowcaseCart();
+});
+
+renderShowcaseCart();
+
+const rsvpConfirmButton = document.querySelector("#rsvp-confirm");
+const guestStatusBoard = document.querySelector(".guest-status-board");
+
+rsvpConfirmButton?.addEventListener("click", () => {
+  const alreadyConfirmed = guestStatusBoard?.querySelector("[data-live-confirmation]");
+  if (alreadyConfirmed) {
+    openUtility({
+      eyebrow: "RSVP",
+      title: "Presenca ja confirmada",
+      text: "Sua confirmacao ja apareceu na lista de convidados.",
+      actions: [{ type: "button", action: "rsvp-tool", label: "Editar RSVP" }]
+    });
+    return;
+  }
+
+  const item = document.createElement("article");
+  item.dataset.liveConfirmation = "true";
+  item.innerHTML = '<span class="status-dot confirmed"></span><strong>Voce</strong><p>Confirmado</p>';
+  guestStatusBoard?.prepend(item);
+  openUtility({
+    eyebrow: "RSVP",
+    title: "Presenca confirmada",
+    text: "Sua confirmacao foi adicionada na lista simulada. No site real, isso fica salvo no painel dos noivos.",
+    actions: [{ type: "button", action: "rsvp-tool", label: "Abrir painel RSVP" }]
+  });
+});
+
+document.querySelector("#note-button")?.addEventListener("click", () => {
+  openUtility({
+    eyebrow: "Recados",
+    title: "Recado enviado",
+    text: "Este popup simula o envio de uma mensagem carinhosa para o casal.",
+    actions: [{ href: "#recados", label: "Ver mural" }]
+  });
+});
 
 const gifts = [
   { name: "Jantar romântico", price: 220 },

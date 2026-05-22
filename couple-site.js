@@ -46,6 +46,12 @@ const scheduleList = document.querySelector("#schedule-list");
 const themeDetails = {
   forest: {
     label: "Floresta elegante",
+    palette: {
+      primary: "#4c6a57",
+      accent: "#d3b07b",
+      soft: "#eef5ec",
+      line: "rgba(76,106,87,.24)"
+    },
     mood: "Verde e acolhedor",
     moodCopy: "Um casamento com atmosfera natural, flores, madeira e luz suave.",
     galleryIntro: "Texturas naturais, verde profundo e detalhes florais para uma celebracao cheia de afeto.",
@@ -63,6 +69,12 @@ const themeDetails = {
   },
   classic: {
     label: "Preto e branco",
+    palette: {
+      primary: "#1f1f24",
+      accent: "#b79f7f",
+      soft: "#f0efec",
+      line: "rgba(31,31,36,.2)"
+    },
     mood: "Classico e atemporal",
     moodCopy: "Uma composicao elegante, com contraste, etiqueta e detalhes precisos.",
     galleryIntro: "Retratos sobrios, flores brancas e composicao refinada para um casamento atemporal.",
@@ -80,6 +92,12 @@ const themeDetails = {
   },
   photo: {
     label: "Editorial romantico",
+    palette: {
+      primary: "#6a0f23",
+      accent: "#d8b074",
+      soft: "#f8ece6",
+      line: "rgba(106,15,35,.2)"
+    },
     mood: "Leve e cinematografico",
     moodCopy: "Um dia pensado para render lembrancas bonitas, luz natural e cenas espontaneas.",
     galleryIntro: "Paisagem aberta, movimento e um toque editorial para deixar cada momento memoravel.",
@@ -97,6 +115,12 @@ const themeDetails = {
   },
   blush: {
     label: "Minimal delicado",
+    palette: {
+      primary: "#a45f70",
+      accent: "#caa98a",
+      soft: "#fff3f5",
+      line: "rgba(164,95,112,.22)"
+    },
     mood: "Doce e intimista",
     moodCopy: "Uma celebracao calma, clara e cheia de pequenos detalhes afetivos.",
     galleryIntro: "Tons suaves, mesa posta, flores delicadas e uma atmosfera intimista.",
@@ -153,13 +177,24 @@ function getCity(value) {
 }
 
 const requestedThemeKey = site.theme || site.style || "romantic";
-const themeKey = themeDetails[requestedThemeKey] ? requestedThemeKey : "romantic";
+const themeAlias = {
+  modern: "photo",
+  romantic: "forest"
+};
+const normalizedThemeKey = themeAlias[requestedThemeKey] || requestedThemeKey;
+const themeKey = themeDetails[normalizedThemeKey] ? normalizedThemeKey : "forest";
 const theme = themeDetails[themeKey];
 
 document.title = `${site.couple} - Site de casamento`;
 document.documentElement.style.setProperty("--blue-300", site.color || "#dd6a73");
 document.documentElement.style.setProperty("--blue-400", site.color || "#6a0f23");
 document.documentElement.style.setProperty("--blue-500", site.color || "#dd6a73");
+if (theme.palette) {
+  document.documentElement.style.setProperty("--petrol", theme.palette.primary);
+  document.documentElement.style.setProperty("--gold", theme.palette.accent);
+  document.documentElement.style.setProperty("--soft", theme.palette.soft);
+  document.documentElement.style.setProperty("--line", theme.palette.line);
+}
 title.textContent = site.couple;
 date.textContent = formatDate(site.date);
 message.textContent = site.message;
@@ -185,7 +220,8 @@ if (site.storyPhoto) {
   storyPhoto.style.backgroundImage = `url("${site.storyPhoto}")`;
 }
 
-storyPhoto.classList.add(site.photoShape || "soft");
+const resolvedPhotoShape = site.photoShape === "square" ? "soft" : (site.photoShape || "soft");
+storyPhoto.classList.add(resolvedPhotoShape);
 
 const galleryImages = site.gallery || [
   site.heroPhoto || theme.gallery[0],

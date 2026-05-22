@@ -77,7 +77,10 @@
           <a href="#recuperar" id="forgot-password">Esqueci minha senha</a>
         </div>
 
-        <button class="button button-primary login-submit" type="submit">Entrar</button>
+        <div class="login-actions">
+          <button class="button button-primary login-submit" type="submit" name="authAction" value="signin">Entrar</button>
+          <button class="button button-outline login-submit" type="submit" name="authAction" value="signup">Criar conta</button>
+        </div>
         <p class="login-feedback" id="login-feedback" role="status" aria-live="polite"></p>
       </form>
     </section>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OpsCasei - Site de casamento</title>
-  <link rel="icon" href="img/iconnnn.ico" type="image/x-icon">
+  <link rel="icon" href="img/asas.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -21,26 +21,13 @@
       </button>
 
       <nav class="main-nav" aria-label="Navegação principal">
-        <div class="nav-group">
-          <button class="nav-title" type="button">Site de casamento</button>
-          <div class="nav-submenu">
-            <a href="#vantagens">Vantagens</a>
-            <a href="#layouts">Layouts</a>
-            <a href="#depoimentos">Depoimentos</a>
-            <a href="#exemplos">Exemplos reais</a>
-            <a href="#faq">Perguntas frequentes</a>
-          </div>
-        </div>
-        <div class="nav-group">
-          <button class="nav-title" type="button">Lista de casamento</button>
-          <div class="nav-submenu">
-            <a href="#lista">Vantagens</a>
-            <a href="#lista">Tarifas</a>
-            <a href="#depoimentos">Depoimentos</a>
-            <a href="#exemplos">Exemplos reais</a>
-          </div>
-        </div>
-        <a href="#recursos">Planos e Recursos</a>
+        <a href="#topo">Home</a>
+        <a href="#casal">O Casal</a>
+        <a href="#cerimonia">Cerimônia</a>
+        <a href="#recepcao">Recepção</a>
+        <a href="#lista">Lista de Presentes</a>
+        <a href="#rsvp">Confirme sua Presença</a>
+        <a href="#recados">Recados</a>
         <a href="sobre.html">Sobre</a>
       </nav>
 
@@ -49,10 +36,13 @@
         <a class="button button-primary button-small js-open-modal" href="#criar" data-modal="site-builder">Criar site grátis</a>
       </div>
     </div>
+    <div class="header-tagline">
+      <span>Seu site de casamento merece ser <em>inesquecível</em></span>
+    </div>
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero" id="home">
       <div class="hero-slider" aria-hidden="true">
         <div class="hero-slide hero-slide-one"></div>
         <div class="hero-slide hero-slide-two"></div>
@@ -74,21 +64,78 @@
       </div>
     </section>
 
-    <section class="section intro" id="vantagens">
-      <div class="container split">
-        <div class="video-card">
-          <video class="intro-video" src="video/01.mp4" poster="img/01 (7).png" preload="metadata" playsinline></video>
-          <button class="play-button" type="button" aria-label="Assistir vídeo">▶</button>
-        </div>
-        <div class="copy-block">
-          <span class="eyebrow">Tudo em um só lugar</span>
-          <h2>Prático, interativo e inesquecível!</h2>
-          <p>Reúna todas as informações do seu casamento em um só lugar: lista de presentes, confirmação de presença, dicas de estilo, mapa para o local e até álbum de fotos.</p>
-          <p>São mais de 150 recursos para personalizar o site de casamento. Experimente, você vai amar!</p>
-          <div class="section-actions">
-            <a class="button button-primary js-open-modal" href="#funciona" data-modal="rsvp-tool">Testar RSVP</a>
-            <a class="button button-outline" href="#exemplos">Exemplos reais</a>
+    <section class="section couple-showcase" id="casal">
+      <div class="container couple-grid">
+        <div class="couple-media">
+          <img class="couple-main-photo" src="img/01 (7).png" alt="Casal na praia ao pôr do sol">
+          <div class="couple-gallery-strip" aria-label="Galeria do casal">
+            <img src="img/01 (3).png" alt="Casal em frente à igreja">
+            <img src="img/01 (4).png" alt="Casal caminhando na praia">
+            <img src="img/01 (5).png" alt="Casal correndo no mar">
           </div>
+        </div>
+        <div class="copy-block couple-copy">
+          <span class="eyebrow">O Casal</span>
+          <h2>Ana & Miguel</h2>
+          <p>Uma história leve, feita de encontros simples, planos divididos e muita vontade de celebrar com quem fez parte do caminho.</p>
+          <p>O site reúne a cerimônia, recepção, lista de presentes, confirmação de presença e recados em uma experiência bonita para os convidados.</p>
+          <div class="couple-signature">20 de setembro de 2026</div>
+          <div class="section-actions">
+            <a class="button button-primary" href="#cerimonia">Ver detalhes</a>
+            <a class="button button-outline" href="#recados">Deixar recado</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section event-section" id="cerimonia">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Cerimônia e recepção</span>
+          <h2>Todos os detalhes do grande dia</h2>
+          <p>Horários, endereços e informações importantes ficam claros para cada convidado.</p>
+        </div>
+        <div class="event-grid">
+          <article class="event-card">
+            <span class="event-label">Cerimônia</span>
+            <h3>Igreja Nossa Senhora do Carmo</h3>
+            <p>20/09/2026 às 16h. Chegue com antecedência para aproveitar a entrada e as fotos na escadaria.</p>
+            <strong>Estacionamento ao lado da praça</strong>
+          </article>
+          <article class="event-card" id="recepcao">
+            <span class="event-label">Recepção</span>
+            <h3>Espaço Jardim das Flores</h3>
+            <p>Coquetel, jantar e festa a partir das 18h. O local fica a 12 minutos da cerimônia.</p>
+            <strong>Hotéis parceiros próximos ao salão</strong>
+          </article>
+          <article class="countdown-card">
+            <span class="event-label">Contagem regressiva</span>
+            <h3>Faltam</h3>
+            <div class="countdown-grid" data-countdown="2026-09-20T16:00:00-03:00">
+              <div><strong data-countdown-days>0</strong><span>Dias</span></div>
+              <div><strong data-countdown-hours>0</strong><span>Horas</span></div>
+              <div><strong data-countdown-minutes>0</strong><span>Min</span></div>
+              <div><strong data-countdown-seconds>0</strong><span>Seg</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section map-section" id="localizacao">
+      <div class="container map-grid">
+        <div class="copy-block">
+          <span class="eyebrow">Mapas e localização</span>
+          <h2>Como chegar sem erro</h2>
+          <p>Inclua o mapa da cerimônia e da recepção, além de pontos úteis como estacionamento, hotéis e rotas para convidados de fora.</p>
+          <div class="location-points">
+            <span>Estacionamento monitorado</span>
+            <span>Hotéis a 8 minutos</span>
+            <span>Recepção próxima à cerimônia</span>
+          </div>
+        </div>
+        <div class="map-embed" aria-label="Mapa da localização">
+          <iframe title="Mapa da cerimônia" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Igreja%20Nossa%20Senhora%20do%20Carmo%20Ouro%20Preto&output=embed"></iframe>
         </div>
       </div>
     </section>
@@ -100,13 +147,22 @@
           <p>Cada tema foi criado para contar a sua história do seu jeito.</p>
         </div>
         <div class="layout-grid">
-          <article class="layout-card" tabindex="0" data-layout-theme="forest" aria-label="Abrir tema Clássico">
+          <article class="layout-card theme-forest-card" tabindex="0" data-layout-theme="forest" aria-label="Abrir tema Clássico">
             <img src="img/01 (3).png" alt="Tema clássico com igreja histórica">
             <div class="layout-overlay"></div>
+            <div class="layout-shine" aria-hidden="true"></div>
             <div class="layout-content">
-              <span class="layout-kicker">01 • CLÁSSICO</span>
+              <div class="layout-topline">
+                <span class="layout-kicker">01 • CLÁSSICO</span>
+                <span class="layout-price">R$ 97</span>
+              </div>
               <h3>Ana & Miguel</h3>
               <p>Floresta elegante</p>
+              <div class="theme-palette" aria-label="Paleta do tema">
+                <span class="swatch-forest-one"></span>
+                <span class="swatch-forest-two"></span>
+                <span class="swatch-forest-three"></span>
+              </div>
               <ul class="layout-features" aria-label="Recursos do tema">
                 <li>🏛 Cerimônia</li>
                 <li>🎁 Lista de presentes</li>
@@ -116,17 +172,26 @@
               </ul>
               <div class="layout-actions">
                 <button type="button" data-theme-demo="forest">Ver demonstração</button>
-                <button type="button" data-theme-use="forest">Usar este tema</button>
+                <button type="button" data-theme-buy="forest">Comprar agora</button>
               </div>
             </div>
           </article>
-          <article class="layout-card" tabindex="0" data-layout-theme="classic" aria-label="Abrir tema Romântico">
-            <img src="img/01 (4).png" alt="Tema romântico na praia ao pôr do sol">
+          <article class="layout-card theme-monochrome" tabindex="0" data-layout-theme="classic" aria-label="Abrir tema Preto e branco">
+            <img src="img/01 (4).png" alt="Tema preto e branco na praia ao pôr do sol">
             <div class="layout-overlay"></div>
+            <div class="layout-shine" aria-hidden="true"></div>
             <div class="layout-content">
-              <span class="layout-kicker">02 • ROMÂNTICO</span>
+              <div class="layout-topline">
+                <span class="layout-kicker">02 • PRETO E BRANCO</span>
+                <span class="layout-price">R$ 97</span>
+              </div>
               <h3>Clara & João</h3>
-              <p>Praia ao pôr do sol</p>
+              <p>Preto e branco</p>
+              <div class="theme-palette" aria-label="Paleta do tema">
+                <span class="swatch-classic-one"></span>
+                <span class="swatch-classic-two"></span>
+                <span class="swatch-classic-three"></span>
+              </div>
               <ul class="layout-features" aria-label="Recursos do tema">
                 <li>🏛 Cerimônia</li>
                 <li>🎁 Lista de presentes</li>
@@ -136,17 +201,26 @@
               </ul>
               <div class="layout-actions">
                 <button type="button" data-theme-demo="classic">Ver demonstração</button>
-                <button type="button" data-theme-use="classic">Usar este tema</button>
+                <button type="button" data-theme-buy="classic">Comprar agora</button>
               </div>
             </div>
           </article>
-          <article class="layout-card" tabindex="0" data-layout-theme="photo" aria-label="Abrir tema Editorial">
+          <article class="layout-card theme-editorial-card" tabindex="0" data-layout-theme="photo" aria-label="Abrir tema Editorial">
             <img src="img/01 (5).png" alt="Tema editorial com casal correndo no mar">
             <div class="layout-overlay"></div>
+            <div class="layout-shine" aria-hidden="true"></div>
             <div class="layout-content">
-              <span class="layout-kicker">03 • EDITORIAL</span>
+              <div class="layout-topline">
+                <span class="layout-kicker">03 • EDITORIAL</span>
+                <span class="layout-price">R$ 127</span>
+              </div>
               <h3>Marina & Theo</h3>
-              <p>Luz natural</p>
+              <p>Editorial romântico</p>
+              <div class="theme-palette" aria-label="Paleta do tema">
+                <span class="swatch-photo-one"></span>
+                <span class="swatch-photo-two"></span>
+                <span class="swatch-photo-three"></span>
+              </div>
               <ul class="layout-features" aria-label="Recursos do tema">
                 <li>🏛 Cerimônia</li>
                 <li>🎁 Lista de presentes</li>
@@ -156,17 +230,26 @@
               </ul>
               <div class="layout-actions">
                 <button type="button" data-theme-demo="photo">Ver demonstração</button>
-                <button type="button" data-theme-use="photo">Usar este tema</button>
+                <button type="button" data-theme-buy="photo">Comprar agora</button>
               </div>
             </div>
           </article>
-          <article class="layout-card" tabindex="0" data-layout-theme="blush" aria-label="Abrir tema Minimal">
+          <article class="layout-card theme-blush-card" tabindex="0" data-layout-theme="blush" aria-label="Abrir tema Minimal">
             <img src="img/01 (7).png" alt="Tema minimal com casal na praia">
             <div class="layout-overlay"></div>
+            <div class="layout-shine" aria-hidden="true"></div>
             <div class="layout-content">
-              <span class="layout-kicker">04 • MINIMAL</span>
+              <div class="layout-topline">
+                <span class="layout-kicker">04 • MINIMAL</span>
+                <span class="layout-price">R$ 97</span>
+              </div>
               <h3>Helena & Davi</h3>
-              <p>Celebração delicada</p>
+              <p>Minimal delicado</p>
+              <div class="theme-palette" aria-label="Paleta do tema">
+                <span class="swatch-blush-one"></span>
+                <span class="swatch-blush-two"></span>
+                <span class="swatch-blush-three"></span>
+              </div>
               <ul class="layout-features" aria-label="Recursos do tema">
                 <li>🏛 Cerimônia</li>
                 <li>🎁 Lista de presentes</li>
@@ -176,7 +259,7 @@
               </ul>
               <div class="layout-actions">
                 <button type="button" data-theme-demo="blush">Ver demonstração</button>
-                <button type="button" data-theme-use="blush">Usar este tema</button>
+                <button type="button" data-theme-buy="blush">Comprar agora</button>
               </div>
             </div>
           </article>
@@ -185,49 +268,165 @@
     </section>
 
     <section class="section gift-list" id="lista">
-      <div class="container split reverse">
-        <div class="copy-block">
-          <span class="eyebrow">Presentes em dinheiro</span>
-          <h2>Lista de casamento em dinheiro</h2>
-          <p>Sem créditos em lojas e itens repetidos. Receba seus presentes direto na sua conta e com tarifas competitivas.</p>
-          <ul class="check-list">
-            <li>Menor tarifa do mercado: 3,69% com tabela regressiva.</li>
-            <li>Transferências ilimitadas direto para sua conta bancária.</li>
-            <li>Mais de 50 mil opções de presentes e listas prontas.</li>
-          </ul>
-          <div class="section-actions">
-            <a class="button button-primary js-open-modal" href="#criar-lista" data-modal="gift-tool">Criar lista</a>
-            <a class="button button-outline" href="#lista">Ver mais vantagens</a>
-          </div>
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Lista de Presentes</span>
+          <h2>Presentes simbólicos recebidos em dinheiro</h2>
+          <p>Cards uniformes, valores configuráveis e carrinho simulado para mostrar exatamente como o convidado vai presentear.</p>
         </div>
-        <div class="gift-visual" aria-label="Prévia da lista de presentes">
-          <div class="gift-bg"></div>
-          <div class="phone phone-large">
-            <div class="phone-notch"></div>
-            <div class="phone-screen">
-              <h3>Lua de mel</h3>
-              <div class="gift-item">
-                <span>✈</span>
-                <div>
-                  <strong>Passagem aérea</strong>
-                  <small>R$ 450,00</small>
-                </div>
+        <div class="gift-board">
+          <div class="gift-products">
+            <article class="gift-card">
+              <img src="img/tel.png" alt="Cota de lua de mel">
+              <div>
+                <span>Lua de mel</span>
+                <h3>Cota de viagem</h3>
+                <p>Ajuda para a primeira viagem do casal.</p>
+                <strong>R$ 450,00</strong>
+                <button type="button" data-showcase-gift="0">Presentear</button>
               </div>
-              <div class="gift-item">
-                <span>☕</span>
-                <div>
-                  <strong>Café da manhã</strong>
-                  <small>R$ 180,00</small>
-                </div>
+            </article>
+            <article class="gift-card">
+              <img src="img/01 (4).png" alt="Jantar romântico">
+              <div>
+                <span>Experiência</span>
+                <h3>Jantar romântico</h3>
+                <p>Uma noite especial depois do casamento.</p>
+                <strong>R$ 260,00</strong>
+                <button type="button" data-showcase-gift="1">Presentear</button>
               </div>
-              <div class="progress"><span></span></div>
+            </article>
+            <article class="gift-card">
+              <img src="img/01 (6).png" alt="Mobília da casa nova">
+              <div>
+                <span>Casa nova</span>
+                <h3>Mobília da sala</h3>
+                <p>Ajuda para montar o novo lar.</p>
+                <strong>R$ 680,00</strong>
+                <button type="button" data-showcase-gift="2">Presentear</button>
+              </div>
+            </article>
+            <article class="gift-card">
+              <img src="img/01 (5).png" alt="Álbum de fotos">
+              <div>
+                <span>Memórias</span>
+                <h3>Álbum do casamento</h3>
+                <p>Fotos impressas para guardar para sempre.</p>
+                <strong>R$ 320,00</strong>
+                <button type="button" data-showcase-gift="3">Presentear</button>
+              </div>
+            </article>
+          </div>
+          <aside class="gift-cart-panel" aria-live="polite">
+            <span class="eyebrow">Carrinho simulado</span>
+            <h3>Presentes selecionados</h3>
+            <div class="showcase-cart" id="showcase-cart">
+              <p>Nenhum presente selecionado ainda.</p>
             </div>
+            <div class="gift-totals">
+              <div><span>Subtotal</span><strong id="showcase-subtotal">R$ 0,00</strong></div>
+              <div><span>Taxa 3,89%</span><strong id="showcase-fee">R$ 0,00</strong></div>
+              <div><span>Total</span><strong id="showcase-total">R$ 0,00</strong></div>
+            </div>
+            <p class="fee-note">A taxa de serviço é 3,89% por presente selecionado.</p>
+            <button class="button button-primary" type="button" id="showcase-clear">Limpar carrinho</button>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section rsvp-section" id="rsvp">
+      <div class="container rsvp-grid">
+        <div class="copy-block">
+          <span class="eyebrow">Confirme sua Presença</span>
+          <h2>RSVP simples e bonito</h2>
+          <p>Acompanhe quem confirmou, quem ainda está pendente e quem não poderá comparecer, tudo com visual limpo.</p>
+          <button class="button button-primary" type="button" id="rsvp-confirm">Confirmar minha presença</button>
+        </div>
+        <div class="guest-status-board">
+          <article><span class="status-dot confirmed"></span><strong>Marina Souza</strong><p>Confirmado</p></article>
+          <article><span class="status-dot pending"></span><strong>Paulo Mendes</strong><p>Pendente</p></article>
+          <article><span class="status-dot canceled"></span><strong>Clara Ribeiro</strong><p>Cancelado</p></article>
+          <article><span class="status-dot confirmed"></span><strong>Família Almeida</strong><p>Confirmado</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compare-section" id="comparativo">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Comparativo</span>
+          <h2>Condições claras para decidir com segurança</h2>
+        </div>
+        <div class="compare-table" role="table" aria-label="Comparativo de condições">
+          <div class="compare-row compare-head" role="row">
+            <span>Serviço</span><span>OPSCASEI</span><span>Concorrentes</span>
+          </div>
+          <div class="compare-row" role="row">
+            <span>Site personalizado</span><strong>Incluso</strong><span>Plano pago</span>
+          </div>
+          <div class="compare-row" role="row">
+            <span>Lista em dinheiro</span><strong>3,89%</strong><span>4,99% a 6,99%</span>
+          </div>
+          <div class="compare-row" role="row">
+            <span>RSVP e recados</span><strong>Incluso</strong><span>Limitado</span>
+          </div>
+          <div class="compare-row" role="row">
+            <span>Temas premium</span><strong>4 estilos</strong><span>Catálogo básico</span>
           </div>
         </div>
       </div>
     </section>
 
-   
+    <section class="section planner-section" id="assessorias">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Assessorias e cerimonialistas</span>
+          <h2>Profissionais para deixar tudo no lugar</h2>
+        </div>
+        <div class="planner-grid">
+          <article>
+            <img src="img/mulher.png" alt="Assessoria Bella Festa">
+            <div>
+              <h3>Bella Festa</h3>
+              <p>4.9 de avaliação</p>
+              <span>São Paulo, SP</span>
+            </div>
+          </article>
+          <article>
+            <img src="img/01 (3).png" alt="Cerimonial Jardim">
+            <div>
+              <h3>Cerimonial Jardim</h3>
+              <p>4.8 de avaliação</p>
+              <span>Ouro Preto, MG</span>
+            </div>
+          </article>
+          <article>
+            <img src="img/01 (7).png" alt="Ateliê do Sim">
+            <div>
+              <h3>Ateliê do Sim</h3>
+              <p>5.0 de avaliação</p>
+              <span>Florianópolis, SC</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section notes-section" id="recados">
+      <div class="container notes-grid">
+        <div class="copy-block">
+          <span class="eyebrow">Recados</span>
+          <h2>Mensagens dos convidados</h2>
+          <p>Um espaço carinhoso para os convidados deixarem votos, lembranças e mensagens para o casal.</p>
+          <button class="button button-primary" type="button" id="note-button">Deixar recado</button>
+        </div>
+        <div class="note-wall" id="note-wall">
+          <article><p>Que esse dia seja lindo como a história de vocês.</p><strong>Camila</strong></article>
+          <article><p>Estamos contando os dias para celebrar juntos.</p><strong>Família Rocha</strong></article>
+        </div>
+      </div>
+    </section>
 
     <section class="section features" id="recursos">
       <div class="container">
@@ -327,14 +526,14 @@
       </div>
       <div>
         <h3>Para os casais</h3>
-        <a href="#vantagens">Site de casamento</a>
+        <a href="#casal">O Casal</a>
         <a href="#lista">Lista de casamento</a>
-        <a href="#recursos">Planos e recursos</a>
+        <a href="#rsvp">Confirme sua presença</a>
       </div>
       <div>
         <h3>Links úteis</h3>
-        <a href="#faq">Central de ajuda</a>
-        <a href="#sobre">Nossa história</a>
+        <a href="#cerimonia">Cerimônia</a>
+        <a href="#recepcao">Recepção</a>
         <a href="#contato">Fale conosco</a>
       </div>
       <div>
@@ -353,8 +552,8 @@
     </div>
     <div class="footer-bottom">
       <div class="container footer-bottom-inner">
-        <p>Av. Dr. Chucri Zaidan 1550, cj 604 - São Paulo - CEP: 04711-130</p>
-        <p>© OpsCasei 2007 - 2026</p>
+
+    
       </div>
     </div>
   </footer>
@@ -381,6 +580,7 @@
               <option value="modern">Moderno</option>
             </select>
           </label>
+          <input name="theme" type="hidden" value="romantic">
           <label>Mensagem principal
             <textarea name="message" rows="3">Vamos celebrar esse dia com as pessoas que amamos.</textarea>
           </label>
@@ -502,6 +702,46 @@
       </div>
     </article>
 
+    <article class="modal checkout-modal" id="theme-checkout" role="dialog" aria-modal="true" aria-labelledby="theme-checkout-title">
+      <button class="modal-close" type="button" data-close-modal aria-label="Fechar">×</button>
+      <div class="checkout-grid">
+        <div class="checkout-preview">
+          <img id="checkout-image" src="img/01 (3).png" alt="">
+          <div class="checkout-preview-copy">
+            <span id="checkout-category">Tema premium</span>
+            <h2 id="theme-checkout-title">Floresta elegante</h2>
+            <p id="checkout-description">Site completo com RSVP, lista de presentes, galeria e contagem regressiva.</p>
+          </div>
+        </div>
+        <form class="tool-form checkout-form" id="theme-checkout-form">
+          <span class="eyebrow">Finalizar compra</span>
+          <div class="checkout-price-line">
+            <strong id="checkout-price">R$ 97</strong>
+            <span>Pagamento único</span>
+          </div>
+          <input type="hidden" name="theme" id="checkout-theme-key" value="forest">
+          <label>Nome do casal
+            <input name="couple" type="text" placeholder="Ex: Ana & Miguel" required>
+          </label>
+          <label>E-mail
+            <input name="email" type="email" placeholder="seuemail@email.com" required>
+          </label>
+          <label>WhatsApp
+            <input name="phone" type="tel" placeholder="(00) 00000-0000" required>
+          </label>
+          <ul class="checkout-includes">
+            <li>Site publicado com o tema escolhido</li>
+            <li>RSVP, presentes, galeria e recados inclusos</li>
+            <li>Personalização de nomes, data, cores e fotos</li>
+          </ul>
+          <div class="form-actions">
+            <button class="button button-outline" type="button" id="checkout-demo">Ver demonstração</button>
+            <button class="button button-primary" type="submit">Finalizar compra</button>
+          </div>
+        </form>
+      </div>
+    </article>
+
     <article class="modal compact-modal" id="utility-modal" role="dialog" aria-modal="true" aria-labelledby="utility-title">
       <button class="modal-close" type="button" data-close-modal aria-label="Fechar">×</button>
       <div class="tool-form">
@@ -528,6 +768,24 @@
   <button class="chat-assistant" type="button" aria-label="Abrir assistente de chat" aria-expanded="false">
     <img src="video/chatcasamento.webp" alt="">
   </button>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBulTomdHV1TL5MPa-5fLCKXUAHiSL0Zcc",
+      authDomain: "site-casamento-7e66a.firebaseapp.com",
+      projectId: "site-casamento-7e66a",
+      storageBucket: "site-casamento-7e66a.firebasestorage.app",
+      messagingSenderId: "378703321412",
+      appId: "1:378703321412:web:ab1daab40ffd7dd16f5f11",
+      measurementId: "G-DG9EECRLGR"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    console.log("Firebase carregado!", app, analytics);
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
