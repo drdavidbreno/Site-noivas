@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OpsCasei - Site de casamento</title>
+  <link rel="icon" href="img/iconnnn.ico" type="image/x-icon">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -40,8 +41,8 @@
           </div>
         </div>
         <a href="#recursos">Planos e Recursos</a>
-      <a href="sobre.html">Sobre</a>
-      </nav> ?
+        <a href="sobre.html">Sobre</a>
+      </nav>
 
       <div class="header-actions">
         <a class="login-link" href="login.html">Entrar</a>
@@ -76,7 +77,7 @@
     <section class="section intro" id="vantagens">
       <div class="container split">
         <div class="video-card">
-          <video class="intro-video" src="video/01.mp4" preload="metadata" playsinline></video>
+          <video class="intro-video" src="video/01.mp4" poster="img/01 (7).png" preload="metadata" playsinline></video>
           <button class="play-button" type="button" aria-label="Assistir vídeo">▶</button>
         </div>
         <div class="copy-block">
@@ -94,52 +95,91 @@
 
     <section class="section layouts" id="layouts">
       <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">Layouts premium</span>
-          <h2>Modelos feitos por quem entende</h2>
-          <p>Todos os layouts contam com introdução, save the date e convite digital. Escolha seu favorito, combine fotos, cores e fontes.</p>
+        <div class="section-heading theme-heading">
+          <h2>Escolha o estilo do seu site</h2>
+          <p>Cada tema foi criado para contar a sua história do seu jeito.</p>
         </div>
         <div class="layout-grid">
-          <article class="layout-card forest" role="button" tabindex="0" data-layout-theme="forest" aria-label="Abrir tema Floresta elegante">
-            <div class="layout-browser">
-              <span></span><span></span><span></span>
-            </div>
+          <article class="layout-card" tabindex="0" data-layout-theme="forest" aria-label="Abrir tema Clássico">
+            <img src="img/01 (3).png" alt="Tema clássico com igreja histórica">
+            <div class="layout-overlay"></div>
             <div class="layout-content">
-              <p>Ana & Miguel</p>
-              <small>Floresta elegante</small>
+              <span class="layout-kicker">01 • CLÁSSICO</span>
+              <h3>Ana & Miguel</h3>
+              <p>Floresta elegante</p>
+              <ul class="layout-features" aria-label="Recursos do tema">
+                <li>🏛 Cerimônia</li>
+                <li>🎁 Lista de presentes</li>
+                <li>✅ RSVP</li>
+                <li>🖼 Galeria</li>
+                <li>⏳ Contagem regressiva</li>
+              </ul>
+              <div class="layout-actions">
+                <button type="button" data-theme-demo="forest">Ver demonstração</button>
+                <button type="button" data-theme-use="forest">Usar este tema</button>
+              </div>
             </div>
           </article>
-          <article class="layout-card classic" role="button" tabindex="0" data-layout-theme="classic" aria-label="Abrir tema Preto e branco">
-            <div class="layout-browser">
-              <span></span><span></span><span></span>
-            </div>
+          <article class="layout-card" tabindex="0" data-layout-theme="classic" aria-label="Abrir tema Romântico">
+            <img src="img/01 (4).png" alt="Tema romântico na praia ao pôr do sol">
+            <div class="layout-overlay"></div>
             <div class="layout-content">
-              <p>Clara & João</p>
-              <small>Preto e branco</small>
+              <span class="layout-kicker">02 • ROMÂNTICO</span>
+              <h3>Clara & João</h3>
+              <p>Praia ao pôr do sol</p>
+              <ul class="layout-features" aria-label="Recursos do tema">
+                <li>🏛 Cerimônia</li>
+                <li>🎁 Lista de presentes</li>
+                <li>✅ RSVP</li>
+                <li>🖼 Galeria</li>
+                <li>⏳ Contagem regressiva</li>
+              </ul>
+              <div class="layout-actions">
+                <button type="button" data-theme-demo="classic">Ver demonstração</button>
+                <button type="button" data-theme-use="classic">Usar este tema</button>
+              </div>
             </div>
           </article>
-          <article class="layout-card photo" role="button" tabindex="0" data-layout-theme="photo" aria-label="Abrir tema Editorial romantico">
-            <div class="layout-browser">
-              <span></span><span></span><span></span>
-            </div>
+          <article class="layout-card" tabindex="0" data-layout-theme="photo" aria-label="Abrir tema Editorial">
+            <img src="img/01 (5).png" alt="Tema editorial com casal correndo no mar">
+            <div class="layout-overlay"></div>
             <div class="layout-content">
-              <p>Marina & Theo</p>
-              <small>Editorial romântico</small>
+              <span class="layout-kicker">03 • EDITORIAL</span>
+              <h3>Marina & Theo</h3>
+              <p>Luz natural</p>
+              <ul class="layout-features" aria-label="Recursos do tema">
+                <li>🏛 Cerimônia</li>
+                <li>🎁 Lista de presentes</li>
+                <li>✅ RSVP</li>
+                <li>🖼 Galeria</li>
+                <li>⏳ Contagem regressiva</li>
+              </ul>
+              <div class="layout-actions">
+                <button type="button" data-theme-demo="photo">Ver demonstração</button>
+                <button type="button" data-theme-use="photo">Usar este tema</button>
+              </div>
             </div>
           </article>
-          <article class="layout-card blush" role="button" tabindex="0" data-layout-theme="blush" aria-label="Abrir tema Minimal delicado">
-            <div class="layout-browser">
-              <span></span><span></span><span></span>
-            </div>
+          <article class="layout-card" tabindex="0" data-layout-theme="blush" aria-label="Abrir tema Minimal">
+            <img src="img/01 (7).png" alt="Tema minimal com casal na praia">
+            <div class="layout-overlay"></div>
             <div class="layout-content">
-              <p>Helena & Davi</p>
-              <small>Minimal delicado</small>
+              <span class="layout-kicker">04 • MINIMAL</span>
+              <h3>Helena & Davi</h3>
+              <p>Celebração delicada</p>
+              <ul class="layout-features" aria-label="Recursos do tema">
+                <li>🏛 Cerimônia</li>
+                <li>🎁 Lista de presentes</li>
+                <li>✅ RSVP</li>
+                <li>🖼 Galeria</li>
+                <li>⏳ Contagem regressiva</li>
+              </ul>
+              <div class="layout-actions">
+                <button type="button" data-theme-demo="blush">Ver demonstração</button>
+                <button type="button" data-theme-use="blush">Usar este tema</button>
+              </div>
             </div>
           </article>
-        </div>
-        <div class="center-actions">
-          <a class="button button-primary js-open-modal" href="#criar" data-modal="site-builder">Criar site grátis</a>
-          <a class="button button-outline" href="#layouts">Ver mais layouts</a>
         </div>
       </div>
     </section>

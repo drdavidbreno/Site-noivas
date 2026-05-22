@@ -311,11 +311,40 @@ function openThemeSite(themeKey) {
 }
 
 document.querySelectorAll("[data-layout-theme]").forEach((card) => {
-  card.addEventListener("click", () => openThemeSite(card.dataset.layoutTheme));
+  card.addEventListener("click", (event) => {
+    if (event.target.closest("button, a")) return;
+    openThemeSite(card.dataset.layoutTheme);
+  });
   card.addEventListener("keydown", (event) => {
     if (event.key !== "Enter" && event.key !== " ") return;
     event.preventDefault();
     openThemeSite(card.dataset.layoutTheme);
+  });
+});
+
+document.querySelectorAll("[data-theme-demo]").forEach((button) => {
+  button.addEventListener("click", (event) => {
+    event.stopPropagation();
+    openThemeSite(button.dataset.themeDemo);
+  });
+});
+
+document.querySelectorAll("[data-theme-use]").forEach((button) => {
+  button.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const styleByTheme = {
+      forest: "romantic",
+      classic: "classic",
+      photo: "modern",
+      blush: "romantic"
+    };
+
+    if (builderForm?.elements.style) {
+      builderForm.elements.style.value = styleByTheme[button.dataset.themeUse] || "romantic";
+      updateSitePreview();
+    }
+
+    openModal("site-builder");
   });
 });
 
