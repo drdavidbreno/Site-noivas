@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site do casal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="couple-page">
+  <header class="couple-header">
+    <a class="brand" href="index.html"><img class="brand-symbol" src="img/opslogo.png" alt=""><img class="brand-logo" src="img/opscaseifrase.png" alt="OpsCasei"></a>
+    <nav>
+      <a href="#historia">Historia</a>
+      <a href="#detalhes">Detalhes</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#presentes">Presentes</a>
+      <a href="#recados">Recados</a>
+      <a href="#rsvp">RSVP</a>
+    </nav>
+  </header>
+
+  <main id="couple-site">
+    <section class="couple-hero" id="home">
+      <div class="couple-hero-bg"></div>
+      <div class="couple-hero-overlay"></div>
+      <div class="container couple-hero-content">
+        <span>Save the date</span>
+        <h1 id="couple-title">Carregando...</h1>
+        <p id="couple-date"></p>
+        <p class="couple-hero-tagline" id="couple-tagline"></p>
+        <div class="couple-hero-facts" aria-label="Resumo do casamento">
+          <div>
+            <strong id="days-left">--</strong>
+            <small>dias para o sim</small>
+          </div>
+          <div>
+            <strong id="hero-theme-label">Tema</strong>
+            <small>estilo escolhido</small>
+          </div>
+          <div>
+            <strong id="hero-city">Local</strong>
+            <small>onde celebrar</small>
+          </div>
+        </div>
+        <a class="button button-white" href="#rsvp">Confirmar presenca</a>
+      </div>
+    </section>
+
+    <section class="couple-detail-band" id="detalhes">
+      <div class="container detail-grid">
+        <article>
+          <span>Quando</span>
+          <strong id="detail-date">--</strong>
+          <p>Prepare-se para viver esse dia com a gente.</p>
+        </article>
+        <article>
+          <span>Onde</span>
+          <strong id="detail-place">--</strong>
+          <p>Todos os detalhes do local em uma pagina facil de consultar.</p>
+        </article>
+        <article>
+          <span>Clima</span>
+          <strong id="detail-mood">Celebrar</strong>
+          <p id="detail-mood-copy">Um encontro feito para guardar na memoria.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section couple-story" id="historia">
+      <div class="container split">
+        <div class="story-photo"></div>
+        <div class="copy-block">
+          <span class="eyebrow">Nossa historia</span>
+          <h2>Um dia para celebrar o amor</h2>
+          <p id="couple-message">Mensagem do casal.</p>
+          <p class="couple-place" id="couple-place"></p>
+          <p>Estamos muito felizes em compartilhar esse momento com voces. Aqui voce encontra as informacoes principais do casamento, confirma presenca e acessa nossa lista de presentes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section couple-gallery" id="galeria">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Galeria</span>
+          <h2>Um pouco do clima do nosso dia</h2>
+          <p id="gallery-intro">Imagens escolhidas para traduzir o estilo da celebracao.</p>
+        </div>
+        <div class="couple-gallery-grid" id="couple-gallery-grid"></div>
+      </div>
+    </section>
+
+    <section class="section couple-schedule">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Programacao</span>
+          <h2>Como o dia vai acontecer</h2>
+        </div>
+        <div class="schedule-list" id="schedule-list"></div>
+      </div>
+    </section>
+
+    <section class="section couple-gifts" id="presentes" data-optional-section="gifts">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Lista de presentes</span>
+          <h2>Escolha uma forma de presentear</h2>
+          <p id="couple-gift-status">Nenhum presente selecionado ainda.</p>
+        </div>
+        <div class="couple-gift-grid" id="couple-gift-grid"></div>
+      </div>
+    </section>
+
+    <section class="section couple-notes" id="recados">
+      <div class="container notes-layout">
+        <form class="tool-form note-form" id="note-form">
+          <span class="eyebrow">Recados</span>
+          <h2>Deixe uma mensagem para o casal</h2>
+          <label>Seu nome
+            <input name="name" type="text" placeholder="Ex: Ana Souza" required>
+          </label>
+          <label>Mensagem
+            <textarea name="message" rows="4" placeholder="Escreva um recado carinhoso ou divertido" required></textarea>
+          </label>
+          <button class="button button-primary" type="submit">Enviar recado</button>
+        </form>
+        <aside class="note-board">
+          <span class="eyebrow">Mural</span>
+          <h3>Mensagens recebidas</h3>
+          <div class="note-list" id="note-list"></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section couple-rsvp" id="rsvp" data-optional-section="rsvp">
+      <div class="container modal-grid">
+        <form class="tool-form" id="couple-rsvp-form">
+          <span class="eyebrow">RSVP</span>
+          <h2>Confirme sua presenca</h2>
+          <label>Seu nome
+            <input name="guest" type="text" required>
+          </label>
+          <label>Acompanhantes
+            <input name="companions" type="number" min="0" max="10" value="0">
+          </label>
+          <label>Mensagem para o casal
+            <textarea name="note" rows="3" placeholder="Escreva uma mensagem carinhosa"></textarea>
+          </label>
+          <button class="button button-primary" type="submit">Confirmar</button>
+        </form>
+        <aside class="guest-list">
+          <h3>Confirmacoes recebidas</h3>
+          <div id="couple-guests"></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-bottom-inner">
+      <p id="couple-footer">Site criado com carinho.</p>
+      <p><a href="index.html">Voltar para a pagina inicial</a></p>
+    </div>
+  </footer>
+
+  <script src="couple-site.js"></script>
+</body>
+</html>

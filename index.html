@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpsCasei - Site de casamento</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header" id="topo">
+    <div class="container header-inner">
+      <a class="brand" href="#topo" aria-label="Página inicial">
+        <img class="brand-symbol" src="img/opslogo.png" alt="">
+        <img class="brand-logo" src="img/opscaseifrase.png" alt="OpsCasei">
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="main-nav" aria-label="Navegação principal">
+        <div class="nav-group">
+          <button class="nav-title" type="button">Site de casamento</button>
+          <div class="nav-submenu">
+            <a href="#vantagens">Vantagens</a>
+            <a href="#layouts">Layouts</a>
+            <a href="#depoimentos">Depoimentos</a>
+            <a href="#exemplos">Exemplos reais</a>
+            <a href="#faq">Perguntas frequentes</a>
+          </div>
+        </div>
+        <div class="nav-group">
+          <button class="nav-title" type="button">Lista de casamento</button>
+          <div class="nav-submenu">
+            <a href="#lista">Vantagens</a>
+            <a href="#lista">Tarifas</a>
+            <a href="#depoimentos">Depoimentos</a>
+            <a href="#exemplos">Exemplos reais</a>
+          </div>
+        </div>
+        <a href="#recursos">Planos e Recursos</a>
+        <a href="#sobre">Sobre</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="login-link" href="login.html">Entrar</a>
+        <a class="button button-primary button-small js-open-modal" href="#criar" data-modal="site-builder">Criar site grátis</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-slider" aria-hidden="true">
+        <div class="hero-slide hero-slide-one"></div>
+        <div class="hero-slide hero-slide-two"></div>
+        <div class="hero-slide hero-slide-three"></div>
+        <div class="hero-slide hero-slide-four"></div>
+        <div class="hero-slide hero-slide-five"></div>
+        <div class="hero-slide hero-slide-six"></div>
+        <div class="hero-slide hero-slide-seven"></div>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <div class="hero-copy">
+          <h1 class="hero-statement">Seu site de casamento merece ser <em>inesquecível</em></h1>
+        </div>
+        <div class="hero-actions">
+          <a class="button button-white js-open-modal" href="#criar" data-modal="site-builder">Criar site grátis</a>
+          <a class="button button-ghost js-open-modal" href="#buscar" data-modal="couple-search">Buscar casal</a>
+        </div>
+        <a class="hero-link" href="#exemplos">Inspire-se com nossos exemplos reais</a>
+      </div>
+    </section>
+
+    <section class="section intro" id="vantagens">
+      <div class="container split">
+        <div class="video-card">
+          <video class="intro-video" src="video/01.mp4" preload="metadata" playsinline></video>
+          <button class="play-button" type="button" aria-label="Assistir vídeo">▶</button>
+        </div>
+        <div class="copy-block">
+          <span class="eyebrow">Tudo em um só lugar</span>
+          <h2>Prático, interativo e inesquecível!</h2>
+          <p>Reúna todas as informações do seu casamento em um só lugar: lista de presentes, confirmação de presença, dicas de estilo, mapa para o local e até álbum de fotos.</p>
+          <p>São mais de 150 recursos para personalizar o site de casamento. Experimente, você vai amar!</p>
+          <div class="section-actions">
+            <a class="button button-primary js-open-modal" href="#funciona" data-modal="rsvp-tool">Testar RSVP</a>
+            <a class="button button-outline" href="#exemplos">Exemplos reais</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section layouts" id="layouts">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Layouts premium</span>
+          <h2>Modelos feitos por quem entende</h2>
+          <p>Todos os layouts contam com introdução, save the date e convite digital. Escolha seu favorito, combine fotos, cores e fontes.</p>
+        </div>
+        <div class="layout-grid">
+          <article class="layout-card forest" role="button" tabindex="0" data-layout-theme="forest" aria-label="Abrir tema Floresta elegante">
+            <div class="layout-browser">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="layout-content">
+              <p>Ana & Miguel</p>
+              <small>Floresta elegante</small>
+            </div>
+          </article>
+          <article class="layout-card classic" role="button" tabindex="0" data-layout-theme="classic" aria-label="Abrir tema Preto e branco">
+            <div class="layout-browser">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="layout-content">
+              <p>Clara & João</p>
+              <small>Preto e branco</small>
+            </div>
+          </article>
+          <article class="layout-card photo" role="button" tabindex="0" data-layout-theme="photo" aria-label="Abrir tema Editorial romantico">
+            <div class="layout-browser">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="layout-content">
+              <p>Marina & Theo</p>
+              <small>Editorial romântico</small>
+            </div>
+          </article>
+          <article class="layout-card blush" role="button" tabindex="0" data-layout-theme="blush" aria-label="Abrir tema Minimal delicado">
+            <div class="layout-browser">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="layout-content">
+              <p>Helena & Davi</p>
+              <small>Minimal delicado</small>
+            </div>
+          </article>
+        </div>
+        <div class="center-actions">
+          <a class="button button-primary js-open-modal" href="#criar" data-modal="site-builder">Criar site grátis</a>
+          <a class="button button-outline" href="#layouts">Ver mais layouts</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gift-list" id="lista">
+      <div class="container split reverse">
+        <div class="copy-block">
+          <span class="eyebrow">Presentes em dinheiro</span>
+          <h2>Lista de casamento em dinheiro</h2>
+          <p>Sem créditos em lojas e itens repetidos. Receba seus presentes direto na sua conta e com tarifas competitivas.</p>
+          <ul class="check-list">
+            <li>Menor tarifa do mercado: 3,69% com tabela regressiva.</li>
+            <li>Transferências ilimitadas direto para sua conta bancária.</li>
+            <li>Mais de 50 mil opções de presentes e listas prontas.</li>
+          </ul>
+          <div class="section-actions">
+            <a class="button button-primary js-open-modal" href="#criar-lista" data-modal="gift-tool">Criar lista</a>
+            <a class="button button-outline" href="#lista">Ver mais vantagens</a>
+          </div>
+        </div>
+        <div class="gift-visual" aria-label="Prévia da lista de presentes">
+          <div class="gift-bg"></div>
+          <div class="phone phone-large">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <h3>Lua de mel</h3>
+              <div class="gift-item">
+                <span>✈</span>
+                <div>
+                  <strong>Passagem aérea</strong>
+                  <small>R$ 450,00</small>
+                </div>
+              </div>
+              <div class="gift-item">
+                <span>☕</span>
+                <div>
+                  <strong>Café da manhã</strong>
+                  <small>R$ 180,00</small>
+                </div>
+              </div>
+              <div class="progress"><span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   
+
+    <section class="section features" id="recursos">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Mais de 150 recursos</span>
+          <h2>Ferramentas para cada detalhe</h2>
+        </div>
+        <div class="feature-grid">
+          <article>
+            <span class="feature-icon">✓</span>
+            <h3>Confirmação de presença</h3>
+            <p>Convidados confirmam pelo site, app, telefone ou WhatsApp de forma prática.</p>
+          </article>
+          <article>
+            <span class="feature-icon">✉</span>
+            <h3>Convite digital interativo</h3>
+            <p>Modelos personalizáveis para enviar por WhatsApp, Telegram e outros canais.</p>
+          </article>
+          <article>
+            <span class="feature-icon">⌁</span>
+            <h3>Endereço personalizado</h3>
+            <p>Escolha uma URL especial e fácil de lembrar para o site do casal.</p>
+          </article>
+          <article>
+            <span class="feature-icon">★</span>
+            <h3>Assessoria na montagem</h3>
+            <p>Especialistas ajudam a personalizar o site quando você quiser ganhar tempo.</p>
+          </article>
+        </div>
+        <div class="center-actions">
+          <a class="button button-primary js-open-modal" href="#recursos" data-modal="tools-panel">Ver todos os recursos</a>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section testimonials" id="depoimentos">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Depoimentos</span>
+          <h2>Quem usou, aprovou e recomenda!</h2>
+          <p><strong>4.845</strong> casais já avaliaram com nota média de <strong>4.96 de 5</strong>.</p>
+        </div>
+        <div class="testimonial-grid">
+          <article class="testimonial-card">
+            <div class="couple-photo photo-one"></div>
+            <p>Amei a experiência. Super recomendo. Meu site ficou lindo demais!</p>
+            <div class="stars">★★★★★</div>
+            <h3>Jamille e Chandler</h3>
+            <small>28/03/2026 - Barra dos Coqueiros, SE</small>
+          </article>
+          <article class="testimonial-card">
+            <div class="couple-photo photo-two"></div>
+            <p>Foi tudo perfeito e a plataforma fez parte desse momento tão importante.</p>
+            <div class="stars">★★★★★</div>
+            <h3>Natalia e Mateus</h3>
+            <small>11/01/2026 - Rio de Janeiro, RJ</small>
+          </article>
+          <article class="testimonial-card">
+            <div class="couple-photo photo-three"></div>
+            <p>Maravilhoso, eu amei o site. Super fácil de criar e deixar com nossa cara.</p>
+            <div class="stars">★★★★★</div>
+            <h3>Leticia e Tales</h3>
+            <small>07/03/2026 - Franca, SP</small>
+          </article>
+        </div>
+        <div class="center-actions">
+          <a class="button button-outline" href="#depoimentos">Ver mais depoimentos</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq" id="faq">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Dúvidas comuns</span>
+          <h2>Perguntas frequentes</h2>
+        </div>
+        <div class="accordion">
+          <button type="button">Posso testar grátis?<span>+</span></button>
+          <div class="accordion-panel">Sim. A página está preparada para destacar a criação gratuita e depois evoluir para planos pagos.</div>
+          <button type="button">Dá para editar textos e fotos?<span>+</span></button>
+          <div class="accordion-panel">Sim. Esta versão foi feita em arquivos simples para você trocar textos, cores, imagens e links.</div>
+          <button type="button">Funciona no celular?<span>+</span></button>
+          <div class="accordion-panel">Sim. O layout se adapta para desktop, tablet e celular.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-top">
+      <div>
+        <a class="brand footer-brand" href="#topo"><img class="brand-symbol" src="img/opslogo.png" alt=""><img class="brand-logo" src="img/opscaseifrase.png" alt="OpsCasei"></a>
+        <p>Sites e listas de casamento com visual elegante, recursos completos e uma experiência simples para convidados.</p>
+      </div>
+      <div>
+        <h3>Para os casais</h3>
+        <a href="#vantagens">Site de casamento</a>
+        <a href="#lista">Lista de casamento</a>
+        <a href="#recursos">Planos e recursos</a>
+      </div>
+      <div>
+        <h3>Links úteis</h3>
+        <a href="#faq">Central de ajuda</a>
+        <a href="#sobre">Nossa história</a>
+        <a href="#contato">Fale conosco</a>
+      </div>
+      <div>
+        <h3>Siga a gente</h3>
+        <div class="social-row">
+          <a href="#instagram">Ig</a>
+          <a href="#facebook">Fb</a>
+          <a href="#youtube">Yt</a>
+          <a href="#linkedin">In</a>
+        </div>
+        <div class="footer-seals">
+          <span>RA 1000</span>
+          <span>GPTW</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>Av. Dr. Chucri Zaidan 1550, cj 604 - São Paulo - CEP: 04711-130</p>
+        <p>© OpsCasei 2007 - 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <section class="modal-layer" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+
+    <article class="modal" id="site-builder" role="dialog" aria-modal="true" aria-labelledby="site-builder-title">
+      <button class="modal-close" type="button" data-close-modal aria-label="Fechar">×</button>
+      <div class="modal-grid">
+        <form class="tool-form" id="builder-form">
+          <span class="eyebrow">Assistente</span>
+          <h2 id="site-builder-title">Criar site grátis</h2>
+          <label>Nome do casal
+            <input name="couple" type="text" value="Lívia & Rafael" required>
+          </label>
+          <label>Data do casamento
+            <input name="date" type="date" value="2026-09-20" required>
+          </label>
+          <label>Estilo do site
+            <select name="style">
+              <option value="romantic">Romântico</option>
+              <option value="classic">Clássico</option>
+              <option value="modern">Moderno</option>
+            </select>
+          </label>
+          <label>Mensagem principal
+            <textarea name="message" rows="3">Vamos celebrar esse dia com as pessoas que amamos.</textarea>
+          </label>
+          <label>Frase curta do convite
+            <input name="tagline" type="text" value="Com amor, esperamos você">
+          </label>
+          <label>Local do casamento
+            <input name="place" type="text" value="Espaço Jardim das Flores - São Paulo, SP">
+          </label>
+          <div class="form-row">
+            <label>Cor principal
+              <input name="color" type="color" value="#dd6a73">
+            </label>
+            <label>Formato da foto
+              <select name="photoShape">
+                <option value="soft">Cantos suaves</option>
+                <option value="round">Redonda</option>
+                <option value="square">Quadrada</option>
+              </select>
+            </label>
+          </div>
+          <label>Foto principal
+            <input name="heroPhoto" type="file" accept="image/*">
+          </label>
+          <label>Foto da história
+            <input name="storyPhoto" type="file" accept="image/*">
+          </label>
+          <div class="option-grid">
+            <label><input name="showGifts" type="checkbox" checked> Mostrar lista de presentes</label>
+            <label><input name="showRsvp" type="checkbox" checked> Mostrar RSVP</label>
+          </div>
+          <div class="form-actions">
+            <button class="button button-outline" type="button" id="update-preview">Atualizar prévia</button>
+            <button class="button button-primary" type="submit">Criar site</button>
+          </div>
+        </form>
+        <div class="live-preview" id="site-preview">
+          <div class="preview-ribbon">Save the date</div>
+          <h3>Lívia & Rafael</h3>
+          <p>20/09/2026</p>
+          <strong>Com amor, esperamos você</strong>
+          <span>Vamos celebrar esse dia com as pessoas que amamos.</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="modal" id="couple-search" role="dialog" aria-modal="true" aria-labelledby="couple-search-title">
+      <button class="modal-close" type="button" data-close-modal aria-label="Fechar">×</button>
+      <div class="tool-form">
+        <span class="eyebrow">Busca</span>
+        <h2 id="couple-search-title">Buscar casal</h2>
+        <div class="inline-form">
+          <input id="search-input" type="search" placeholder="Digite Lívia, Rafael, Marina...">
+          <button class="button button-primary" id="search-button" type="button">Buscar</button>
+        </div>
+        <div class="results-list" id="search-results"></div>
+      </div>
+    </article>
+
+    <article class="modal" id="gift-tool" role="dialog" aria-modal="true" aria-labelledby="gift-tool-title">
+      <button class="modal-close" type="button" data-close-modal aria-label="Fechar">×</button>
+      <div class="modal-grid">
+        <div class="tool-form">
+          <span class="eyebrow">Lista</span>
+          <h2 id="gift-tool-title">Lista de presentes</h2>
+          <div class="gift-shop" id="gift-shop"></div>
+        </div>
+        <aside class="gift-summary">
+          <h3>Resumo</h3>
+          <div id="gift-cart"></div>
+          <div class="summary-total">
+            <span>Total recebido</span>
+            <strong id="gift-total">R$ 0,00</strong>
+          </div>
+          <button class="button button-primary" id="clear-gifts" type="button">Limpar lista</button>
+        </aside>
+      </div>
+    </article>
+
+    <article class="modal" id="rsvp-tool" role="dialog" aria-modal="true" aria-labelledby="rsvp-tool-title">
+      <button class="modal-close" type="button" data-close-modal aria-label="Fechar">×</button>
+      <div class="modal-grid">
+        <form class="tool-form" id="rsvp-form">
+          <span class="eyebrow">RSVP</span>
+          <h2 id="rsvp-tool-title">Confirmar presença</h2>
+          <label>Nome do convidado
+            <input name="guest" type="text" placeholder="Ex: Maria Souza" required>
+          </label>
+          <label>Número de acompanhantes
+            <input name="companions" type="number" min="0" max="10" value="0">
+          </label>
+          <label>Vai comparecer?
+            <select name="status">
+              <option value="Confirmado">Sim, estarei presente</option>
+              <option value="Talvez">Ainda não sei</option>
+              <option value="Ausente">Não poderei ir</option>
+            </select>
+          </label>
+          <button class="button button-primary" type="submit">Salvar confirmação</button>
+        </form>
+        <div class="guest-list">
+          <h3>Confirmações</h3>
+          <div id="guest-list"></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="modal" id="tools-panel" role="dialog" aria-modal="true" aria-labelledby="tools-panel-title">
+      <button class="modal-close" type="button" data-close-modal aria-label="Fechar">×</button>
+      <div class="tool-form">
+        <span class="eyebrow">Recursos</span>
+        <h2 id="tools-panel-title">Painel de ferramentas</h2>
+        <div class="tools-grid">
+          <button type="button" data-open-tool="site-builder">Editor de site</button>
+          <button type="button" data-open-tool="gift-tool">Lista de presentes</button>
+          <button type="button" data-open-tool="rsvp-tool">RSVP</button>
+          <button type="button" data-open-tool="couple-search">Buscar casal</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="modal compact-modal" id="utility-modal" role="dialog" aria-modal="true" aria-labelledby="utility-title">
+      <button class="modal-close" type="button" data-close-modal aria-label="Fechar">×</button>
+      <div class="tool-form">
+        <span class="eyebrow" id="utility-eyebrow">Ação</span>
+        <h2 id="utility-title">Título</h2>
+        <p id="utility-text"></p>
+        <div class="utility-actions" id="utility-actions"></div>
+      </div>
+    </article>
+  </section>
+
+  <a class="floating-cta js-open-modal" href="#criar" data-modal="site-builder">Criar site grátis</a>
+  <section class="chat-panel" aria-live="polite" aria-label="Assistente de chat">
+    <button class="chat-close" type="button" aria-label="Fechar chat">x</button>
+    <div class="chat-message chat-message-bot">Oi! Posso te ajudar com o site do casamento?</div>
+    <div class="chat-options">
+      <button type="button" data-chat-answer="site">Quero criar meu site</button>
+      <button type="button" data-chat-answer="lista">Como funciona a lista?</button>
+      <button type="button" data-chat-answer="ajuda">Preciso de ajuda</button>
+    </div>
+    <div class="chat-response" id="chat-response"></div>
+  </section>
+
+  <button class="chat-assistant" type="button" aria-label="Abrir assistente de chat" aria-expanded="false">
+    <img src="video/chatcasamento.webp" alt="">
+  </button>
+  <script src="script.js"></script>
+</body>
+</html>
