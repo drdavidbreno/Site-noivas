@@ -4,6 +4,11 @@ const accordionButtons = document.querySelectorAll(".accordion button");
 const modalLayer = document.querySelector(".modal-layer");
 const modals = document.querySelectorAll(".modal");
 const modalTriggers = document.querySelectorAll(".js-open-modal");
+const modalHashMap = {
+  "#criar": "site-builder",
+  "#buscar": "couple-search",
+  "#criar-lista": "gift-tool"
+};
 const currency = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
 const utilityTitle = document.querySelector("#utility-title");
 const utilityText = document.querySelector("#utility-text");
@@ -79,6 +84,10 @@ modalTriggers.forEach((trigger) => {
     openModal(trigger.dataset.modal);
   });
 });
+
+if (modalHashMap[window.location.hash]) {
+  window.requestAnimationFrame(() => openModal(modalHashMap[window.location.hash]));
+}
 
 document.querySelectorAll("[data-close-modal]").forEach((button) => {
   button.addEventListener("click", closeModal);
