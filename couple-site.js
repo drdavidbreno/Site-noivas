@@ -11,6 +11,9 @@ const site = sites[slug] || {
   place: "Espaço Jardim das Flores - São Paulo, SP",
   color: "#dd6a73",
   photoShape: "soft",
+  heroPhoto: "img/01 (7).png",
+  storyPhoto: "img/01 (3).png",
+  gallery: ["img/01 (7).png", "img/01 (3).png", "img/01 (4).png", "img/01 (5).png", "img/01 (6).png"],
   showGifts: true,
   showRsvp: true,
   slug: "livia-e-rafael"
@@ -55,11 +58,7 @@ const themeDetails = {
     mood: "Verde e acolhedor",
     moodCopy: "Um casamento com atmosfera natural, flores, madeira e luz suave.",
     galleryIntro: "Texturas naturais, verde profundo e detalhes florais para uma celebracao cheia de afeto.",
-    gallery: [
-      "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=900&q=78",
-      "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=78",
-      "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=900&q=78"
-    ],
+    gallery: ["img/01 (3).png", "img/01 (6).png", "img/01 (4).png", "img/01 (5).png", "img/01 (7).png"],
     schedule: [
       ["15:30", "Recepcao no jardim"],
       ["16:30", "Cerimonia ao ar livre"],
@@ -78,11 +77,7 @@ const themeDetails = {
     mood: "Classico e atemporal",
     moodCopy: "Uma composicao elegante, com contraste, etiqueta e detalhes precisos.",
     galleryIntro: "Retratos sobrios, flores brancas e composicao refinada para um casamento atemporal.",
-    gallery: [
-      "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=78",
-      "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=78",
-      "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=78"
-    ],
+    gallery: ["img/01 (4).png", "img/01 (7).png", "img/01 (3).png", "img/01 (6).png", "img/01 (5).png"],
     schedule: [
       ["17:00", "Boas-vindas"],
       ["18:00", "Cerimonia"],
@@ -101,11 +96,7 @@ const themeDetails = {
     mood: "Leve e cinematografico",
     moodCopy: "Um dia pensado para render lembrancas bonitas, luz natural e cenas espontaneas.",
     galleryIntro: "Paisagem aberta, movimento e um toque editorial para deixar cada momento memoravel.",
-    gallery: [
-      "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=900&q=78",
-      "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=900&q=78",
-      "https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?auto=format&fit=crop&w=900&q=78"
-    ],
+    gallery: ["img/01 (5).png", "img/01 (4).png", "img/01 (7).png", "img/01 (6).png", "img/01 (3).png"],
     schedule: [
       ["16:00", "Fotos com familia"],
       ["17:00", "Cerimonia"],
@@ -124,11 +115,7 @@ const themeDetails = {
     mood: "Doce e intimista",
     moodCopy: "Uma celebracao calma, clara e cheia de pequenos detalhes afetivos.",
     galleryIntro: "Tons suaves, mesa posta, flores delicadas e uma atmosfera intimista.",
-    gallery: [
-      "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=78",
-      "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=900&q=78",
-      "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=78"
-    ],
+    gallery: ["img/01 (7).png", "img/01 (3).png", "img/01 (4).png", "img/01 (5).png", "img/01 (6).png"],
     schedule: [
       ["10:30", "Cerimonia intimista"],
       ["12:00", "Almoco"],
@@ -141,11 +128,7 @@ const themeDetails = {
     mood: "Afetivo e elegante",
     moodCopy: "Um encontro criado para celebrar o amor com as pessoas mais importantes.",
     galleryIntro: "Uma selecao de imagens para inspirar a celebracao do casal.",
-    gallery: [
-      "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=78",
-      "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=78",
-      "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=900&q=78"
-    ],
+    gallery: ["img/01 (7).png", "img/01 (3).png", "img/01 (4).png", "img/01 (5).png", "img/01 (6).png"],
     schedule: [
       ["16:00", "Chegada dos convidados"],
       ["17:00", "Cerimonia"],

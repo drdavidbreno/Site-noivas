@@ -218,10 +218,11 @@ const layoutThemeSites = {
     message: "Nosso encontro comecou leve, cresceu com cuidado e agora vira uma celebracao cercada de verde, familia e amigos.",
     tagline: "Um sim entre jardins e memorias",
     place: "Villa Botanica - Campos do Jordao, SP",
-    color: "#6f8b6b",
+    color: "#4c6a57",
     photoShape: "soft",
-    heroPhoto: "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1800&q=82",
-    storyPhoto: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1000&q=80",
+    heroPhoto: "img/01 (3).png",
+    storyPhoto: "img/01 (6).png",
+    gallery: ["img/01 (3).png", "img/01 (6).png", "img/01 (4).png", "img/01 (5).png", "img/01 (7).png"],
     showGifts: true,
     showRsvp: true,
     gifts: [
@@ -239,10 +240,11 @@ const layoutThemeSites = {
     message: "Uma historia elegante, feita de escolhas simples, olhares sinceros e a alegria de reunir quem caminhou conosco.",
     tagline: "Classico, intimo e para sempre",
     place: "Palacio das Artes - Belo Horizonte, MG",
-    color: "#2f3437",
+    color: "#1f1f24",
     photoShape: "soft",
-    heroPhoto: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1800&q=82",
-    storyPhoto: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80",
+    heroPhoto: "img/01 (4).png",
+    storyPhoto: "img/01 (7).png",
+    gallery: ["img/01 (4).png", "img/01 (7).png", "img/01 (3).png", "img/01 (6).png", "img/01 (5).png"],
     showGifts: true,
     showRsvp: true,
     gifts: [
@@ -262,8 +264,9 @@ const layoutThemeSites = {
     place: "Casa das Oliveiras - Curitiba, PR",
     color: "#6a0f23",
     photoShape: "soft",
-    heroPhoto: "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=1800&q=82",
-    storyPhoto: "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1000&q=80",
+    heroPhoto: "img/01 (5).png",
+    storyPhoto: "img/01 (4).png",
+    gallery: ["img/01 (5).png", "img/01 (4).png", "img/01 (7).png", "img/01 (6).png", "img/01 (3).png"],
     showGifts: true,
     showRsvp: true,
     gifts: [
@@ -281,10 +284,11 @@ const layoutThemeSites = {
     message: "Nosso casamento sera delicado, acolhedor e cheio de pequenos gestos. Um encontro para celebrar o amor com calma e beleza.",
     tagline: "Minimal, doce e cheio de significado",
     place: "Atelie Jardim - Florianopolis, SC",
-    color: "#ff8fa3",
+    color: "#a45f70",
     photoShape: "round",
-    heroPhoto: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1800&q=82",
-    storyPhoto: "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=1000&q=80",
+    heroPhoto: "img/01 (7).png",
+    storyPhoto: "img/01 (3).png",
+    gallery: ["img/01 (7).png", "img/01 (3).png", "img/01 (4).png", "img/01 (5).png", "img/01 (6).png"],
     showGifts: true,
     showRsvp: true,
     gifts: [
@@ -370,6 +374,7 @@ const checkoutThemeKey = document.querySelector("#checkout-theme-key");
 const checkoutDemo = document.querySelector("#checkout-demo");
 const themeCheckoutForm = document.querySelector("#theme-checkout-form");
 let selectedCheckoutTheme = "forest";
+const salesEmail = "dr.davidbreno@hotmail.com";
 
 function openThemeCheckout(themeKey) {
   const theme = themeCheckoutInfo[themeKey];
@@ -400,8 +405,12 @@ checkoutDemo?.addEventListener("click", () => {
 themeCheckoutForm?.addEventListener("submit", (event) => {
   event.preventDefault();
   const data = new FormData(themeCheckoutForm);
+  const theme = themeCheckoutInfo[selectedCheckoutTheme] || themeCheckoutInfo.forest;
   const order = {
+    id: `OPS-${Date.now().toString(36).toUpperCase()}`,
     theme: data.get("theme"),
+    themeTitle: theme.title,
+    price: theme.price,
     couple: data.get("couple"),
     email: data.get("email"),
     phone: data.get("phone"),
@@ -410,15 +419,25 @@ themeCheckoutForm?.addEventListener("submit", (event) => {
   const orders = JSON.parse(localStorage.getItem("opscaseiThemeOrders") || "[]");
   orders.unshift(order);
   localStorage.setItem("opscaseiThemeOrders", JSON.stringify(orders));
+  const contactMessage = [
+    `Novo pedido OPSCASEI ${order.id}`,
+    `Tema: ${order.themeTitle} (${order.price})`,
+    `Casal: ${order.couple}`,
+    `E-mail: ${order.email}`,
+    `WhatsApp: ${order.phone}`
+  ].join("\n");
+  const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(contactMessage)}`;
+  const mailUrl = `mailto:${salesEmail}?subject=${encodeURIComponent(`Pedido ${order.id} - ${order.themeTitle}`)}&body=${encodeURIComponent(contactMessage)}`;
   themeCheckoutForm.reset();
   closeModal();
   openUtility({
     eyebrow: "Compra iniciada",
     title: "Tema reservado com sucesso",
-    text: "Recebemos seus dados e deixamos o tema escolhido salvo. Em instantes voce recebe as instrucoes de pagamento e personalizacao por e-mail ou WhatsApp.",
+    text: "O pedido foi salvo neste navegador. Envie os dados para atendimento agora e continue a personalizacao do site.",
     actions: [
-      { type: "button", action: "site-builder", label: "Personalizar site" },
-      { type: "button", action: "open-demo-site", label: "Ver exemplo", secondary: true }
+      { href: whatsappUrl, label: "Enviar no WhatsApp" },
+      { href: mailUrl, label: "Enviar por e-mail", secondary: true },
+      { type: "button", action: "site-builder", label: "Personalizar site", secondary: true }
     ]
   });
 });
@@ -709,17 +728,67 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 
 const showcaseGiftItems = [
-  { name: "Cota de viagem", price: 450 },
-  { name: "Jantar romantico", price: 260 },
-  { name: "Mobilia da sala", price: 680 },
-  { name: "Album do casamento", price: 320 }
+  { name: "Cota de viagem", price: 450, tag: "Lua de mel", description: "Ajuda para a primeira viagem do casal.", image: "img/tel.png" },
+  { name: "Jantar romantico", price: 260, tag: "Experiencia", description: "Uma noite especial depois do casamento.", image: "img/01 (4).png" },
+  { name: "Mobilia da sala", price: 680, tag: "Casa nova", description: "Ajuda para montar o novo lar.", image: "img/01 (6).png" },
+  { name: "Album do casamento", price: 320, tag: "Memorias", description: "Fotos impressas para guardar para sempre.", image: "img/01 (5).png" },
+  { name: "Passagem aerea", price: 550, tag: "Viagem", description: "Cota para chegar ao destino da lua de mel.", image: "img/01 (7).png" },
+  { name: "Diaria em hotel", price: 690, tag: "Lua de mel", description: "Uma noite especial para descansar depois da festa.", image: "img/01 (3).png" },
+  { name: "Cafe da manha", price: 180, tag: "Experiencia", description: "Um cafe caprichado para o primeiro domingo casados.", image: "img/tel.png" },
+  { name: "Day spa do casal", price: 410, tag: "Relax", description: "Um dia de descanso e cuidado a dois.", image: "img/01 (4).png" },
+  { name: "Passeio de barco", price: 430, tag: "Aventura", description: "Uma experiencia leve para guardar na memoria.", image: "img/01 (5).png" },
+  { name: "Kit panelas", price: 780, tag: "Cozinha", description: "Para estrear a cozinha da casa nova.", image: "img/01 (6).png" },
+  { name: "Cafeteira dos sonhos", price: 460, tag: "Casa nova", description: "Cafe quentinho para os primeiros dias juntos.", image: "img/tel.png" },
+  { name: "Aparelho de jantar", price: 390, tag: "Mesa posta", description: "Uma mesa bonita para receber familia e amigos.", image: "img/01 (3).png" },
+  { name: "Enxoval banho e cama", price: 350, tag: "Enxoval", description: "Toalhas e lencois macios para o novo lar.", image: "img/01 (7).png" },
+  { name: "Adega climatizada", price: 930, tag: "Brindes", description: "Para guardar os vinhos dos proximos brindes.", image: "img/01 (4).png" },
+  { name: "Robo aspirador", price: 720, tag: "Praticidade", description: "Mais tempo livre para curtir a vida a dois.", image: "img/01 (6).png" },
+  { name: "Decoracao da sala", price: 270, tag: "Decoracao", description: "Um detalhe bonito para deixar o lar com a cara do casal.", image: "img/01 (5).png" },
+  { name: "Assinatura de vinhos", price: 360, tag: "Brindes", description: "Para brindar todo mes ao novo capitulo.", image: "img/01 (3).png" },
+  { name: "Compra de mercado", price: 240, tag: "Casa nova", description: "Aquela primeira compra caprichada para a despensa.", image: "img/tel.png" },
+  { name: "Pizza da mudanca", price: 110, tag: "Mudanca", description: "Porque todo lar comeca melhor com pizza.", image: "img/01 (4).png" },
+  { name: "Plantas para o lar", price: 170, tag: "Decoracao", description: "Verde, vida e um cantinho mais acolhedor.", image: "img/01 (7).png" },
+  { name: "Aula de danca", price: 280, tag: "Experiencia", description: "Para repetir a primeira danca sem pisar no pe.", image: "img/01 (5).png" },
+  { name: "Massagem pos-festa", price: 300, tag: "Relax", description: "Recuperacao oficial depois de dancar a noite toda.", image: "img/01 (3).png" },
+  { name: "Brinde ao por do sol", price: 190, tag: "Celebracao", description: "Um momento especial para brindar depois do grande dia.", image: "img/01 (7).png" },
+  { name: "Album extra", price: 250, tag: "Memorias", description: "Mais fotos impressas para dividir com a familia.", image: "img/01 (5).png" },
+  { name: "Porta-retratos", price: 150, tag: "Memorias", description: "Para guardar as fotos favoritas do grande dia.", image: "img/01 (3).png" },
+  { name: "Panquecas de domingo", price: 85, tag: "Cafe", description: "Para um cafe da manha demorado e feliz.", image: "img/tel.png" },
+  { name: "Gasolina da lua de mel", price: 220, tag: "Estrada", description: "Para o roteiro render mais historias.", image: "img/01 (4).png" },
+  { name: "Kit banho premium", price: 260, tag: "Spa", description: "Sabonetes, aromas e clima de descanso.", image: "img/01 (6).png" },
+  { name: "Mini bar dos convidados", price: 390, tag: "Festa", description: "Um reforco divertido para animar os brindes.", image: "img/01 (7).png" },
+  { name: "Moveis do quarto", price: 740, tag: "Casa nova", description: "Ajuda para montar um quarto bonito e confortavel.", image: "img/01 (6).png" },
+  { name: "Utensilios de cozinha", price: 230, tag: "Cozinha", description: "Itens uteis para cozinhar as primeiras receitas.", image: "img/tel.png" },
+  { name: "Noite romantica", price: 520, tag: "Experiencia", description: "Uma reserva especial para o casal comemorar.", image: "img/01 (4).png" },
+  { name: "Experiencia gastronomica", price: 300, tag: "Experiencia", description: "Um menu especial para uma noite memoravel.", image: "img/01 (5).png" },
+  { name: "Fundo da casa nova", price: 650, tag: "Casa nova", description: "Ajuda simbolica para os primeiros planos do novo lar.", image: "img/01 (3).png" }
 ];
 const showcaseSelectedGifts = [];
+const showcaseGiftProducts = document.querySelector("#showcase-gift-products");
 const showcaseCart = document.querySelector("#showcase-cart");
 const showcaseSubtotal = document.querySelector("#showcase-subtotal");
 const showcaseFee = document.querySelector("#showcase-fee");
 const showcaseTotal = document.querySelector("#showcase-total");
 const showcaseClear = document.querySelector("#showcase-clear");
+
+function renderShowcaseGiftProducts() {
+  if (!showcaseGiftProducts) return;
+
+  showcaseGiftProducts.innerHTML = showcaseGiftItems.map((gift, index) => {
+    return `
+      <article class="gift-card">
+        <img src="${gift.image}" alt="${gift.name}">
+        <div>
+          <span>${gift.tag}</span>
+          <h3>${gift.name}</h3>
+          <p>${gift.description}</p>
+          <strong>${currency.format(gift.price)}</strong>
+          <button type="button" data-showcase-gift="${index}">Presentear</button>
+        </div>
+      </article>
+    `;
+  }).join("");
+}
 
 function renderShowcaseCart() {
   if (!showcaseCart || !showcaseSubtotal || !showcaseFee || !showcaseTotal) return;
@@ -740,13 +809,16 @@ function renderShowcaseCart() {
   showcaseTotal.textContent = currency.format(subtotal + fee);
 }
 
-document.querySelectorAll("[data-showcase-gift]").forEach((button) => {
-  button.addEventListener("click", () => {
-    const gift = showcaseGiftItems[Number(button.dataset.showcaseGift)];
-    if (!gift) return;
-    showcaseSelectedGifts.push(gift);
-    renderShowcaseCart();
-  });
+renderShowcaseGiftProducts();
+
+showcaseGiftProducts?.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-showcase-gift]");
+  if (!button) return;
+
+  const gift = showcaseGiftItems[Number(button.dataset.showcaseGift)];
+  if (!gift) return;
+  showcaseSelectedGifts.push(gift);
+  renderShowcaseCart();
 });
 
 showcaseClear?.addEventListener("click", () => {
